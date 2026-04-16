@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venkatesan S — Java Full Stack Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:      #080f1e;
+      --bg-card: #0d1a30;
+      --accent:  #38bdf8;
+      --accent2: #0ea5e9;
+      --glow:    rgba(56,189,248,.18);
+      --gold:    #f0c040;
+      --green:   #4ade80;
+      --wp:      #25d366;
+      --li:      #0a66c2;
+      --gh:      #e6edf3;
+      --mail:    #ea4335;
+      --txt:     #e8f4fd;
+      --muted:   #7ea8c4;
+      --border:  rgba(56,189,248,.15);
+      --fh:      'Poppins', sans-serif;
+      --fb:      'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--txt); font-family:var(--fb); overflow-x:hidden; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(8,15,30,.92) !important;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      position:sticky; top:0; z-index:1000; padding:12px 0;
+    }
+    .navbar-brand {
+      font-family:var(--fh); font-weight:800; font-size:1.3rem;
+      color:var(--accent) !important; letter-spacing:.5px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .brand-dot { color:var(--txt); }
+    .nav-link {
+      font-family:var(--fh); font-weight:500; font-size:.82rem;
+      color:var(--muted) !important; letter-spacing:.4px; text-transform:uppercase;
+      margin:0 2px; display:flex !important; align-items:center; gap:6px;
+      transition:color .22s;
+    }
+    .nav-link i { font-size:.75rem; opacity:.8; }
+    .nav-link:hover, .nav-link.active { color:var(--accent) !important; }
+    .navbar-toggler { border-color:var(--border); }
+    .navbar-toggler-icon { filter:invert(70%) sepia(60%) saturate(400%) hue-rotate(180deg); }
+
+
+
+    /* ── HERO ── */
+    
+    #hero { position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden;background: var(--bg); }
+
+    .hero-photo-wrap {
+  position: relative; display: inline-block;
+}
+.hero-photo-wrap img {
+  width: 360px; height: 420px; object-fit: cover;
+  border-radius: 18px; border: 2px solid var(--border);
+  box-shadow: 0 20px 60px rgba(56,189,248,.15);
+  display: block;
+}
+.cgpa-badge {
+  position: absolute; bottom: 18px; right: 18px;
+  background: rgba(8,15,30,.85); backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 8px 14px; text-align: center;
+}
+.cgpa-badge .num { font-family:var(--fh); font-weight:800; font-size:1.3rem; color:var(--accent); line-height:1; }
+.cgpa-badge .lbl { font-size:.65rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+
+.hero-img-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+    .hero-content { position:relative; z-index:1; padding:120px 0 80px; }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.28);
+      color:var(--accent); font-family:var(--fh); font-size:.72rem; font-weight:600;
+      letter-spacing:2px; text-transform:uppercase;
+      padding:6px 16px; border-radius:30px; margin-bottom:22px;
+      animation:fadeUp .6s ease both;
+    }
+    .hero-name {
+      font-family:var(--fh); font-size:clamp(2.6rem,6.5vw,5rem);
+      font-weight:800; line-height:1.06; color:var(--txt);
+      animation:fadeUp .7s .1s ease both;
+    }
+    .hero-name .hi { color:var(--accent); }
+    .hero-role {
+      font-family:var(--fh); font-weight:600;
+      font-size:clamp(1rem,2.2vw,1.25rem); color:var(--accent);
+      margin:8px 0 18px; animation:fadeUp .7s .15s ease both;
+    }
+    .hero-desc {
+      font-size:.97rem; color:var(--muted); line-height:1.8;
+      max-width:480px; margin-bottom:32px; animation:fadeUp .7s .2s ease both;
+    }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .7s .28s ease both; }
+
+    .btn-glow {
+      background:linear-gradient(135deg,var(--accent2),var(--accent));
+      color:#080f1e; font-family:var(--fh); font-weight:700;
+      font-size:.88rem; padding:12px 26px; border:none; border-radius:8px;
+      text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .btn-glow:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(56,189,248,.4); color:#080f1e; }
+
+    .btn-ghost {
+      background:transparent; color:var(--accent);
+      font-family:var(--fh); font-weight:600; font-size:.88rem;
+      padding:11px 24px; border:1.5px solid rgba(56,189,248,.45); border-radius:8px;
+      text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      transition:background .2s, border-color .2s, transform .2s;
+    }
+    .btn-ghost:hover { background:rgba(56,189,248,.1); border-color:var(--accent); transform:translateY(-2px); color:var(--accent); }
+
+    /* Social pills */
+    .hero-socials { display:flex; gap:10px; margin-top:28px; flex-wrap:wrap; animation:fadeUp .7s .35s ease both; }
+    .s-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 16px; border-radius:8px; border:1px solid;
+      font-family:var(--fh); font-size:.78rem; font-weight:600;
+      text-decoration:none; transition:transform .2s, box-shadow .2s, opacity .2s; opacity:.85;
+    }
+    .s-pill:hover { transform:translateY(-2px); opacity:1; }
+    .s-pill i { font-size:1rem; }
+    .s-pill.li  { color:#fff; border-color:var(--li);  background:rgba(10,102,194,.18); }
+    .s-pill.li:hover  { box-shadow:0 6px 20px rgba(10,102,194,.35); }
+    .s-pill.gh  { color:var(--gh); border-color:rgba(230,237,243,.22); background:rgba(230,237,243,.07); }
+    .s-pill.gh:hover  { box-shadow:0 6px 20px rgba(230,237,243,.15); }
+    .s-pill.wp  { color:#fff; border-color:var(--wp); background:rgba(37,211,102,.15); }
+    .s-pill.wp:hover  { box-shadow:0 6px 20px rgba(37,211,102,.3); }
+    .s-pill.em  { color:#fff; border-color:var(--mail); background:rgba(234,67,53,.15); }
+    .s-pill.em:hover  { box-shadow:0 6px 20px rgba(234,67,53,.28); }
+
+    /* ── SECTION COMMON ── */
+    section { padding:88px 0; }
+    .sec-chip {
+      display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--fh); font-size:.7rem; font-weight:600;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--accent); background:rgba(56,189,248,.07);
+      border:1px solid rgba(56,189,248,.18);
+      padding:4px 14px; border-radius:20px; margin-bottom:10px;
+    }
+    .sec-title {
+      font-family:var(--fh); font-size:clamp(1.7rem,3.5vw,2.5rem);
+      font-weight:800; color:var(--txt); line-height:1.15; margin-bottom:12px;
+    }
+    .sec-line {
+      width:48px; height:3px;
+      background:linear-gradient(90deg,var(--accent),transparent);
+      border-radius:2px; margin-bottom:48px;
+    }
+    .sec-line.mx-auto { margin-left:auto; margin-right:auto; }
+
+    /* ── ABOUT ── */
+    #about { background:var(--bg-card); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .about-text { font-size:.96rem; color:var(--muted); line-height:1.85; }
+    .about-text strong { color:var(--txt); }
+    .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:28px; }
+    .info-block .lbl { font-size:.7rem; letter-spacing:1.8px; text-transform:uppercase; color:var(--accent); font-family:var(--fh); font-weight:600; margin-bottom:3px; }
+    .info-block .val { font-size:.92rem; color:var(--txt); }
+
+    /* ── SKILLS ── */
+    .sk-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:14px;
+      padding:26px; height:100%;
+      transition:border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .sk-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 12px 36px rgba(56,189,248,.12); }
+    .sk-icon { font-size:1.5rem; color:var(--accent); margin-bottom:12px; }
+    .sk-name { font-family:var(--fh); font-weight:700; font-size:.95rem; color:var(--txt); margin-bottom:14px; }
+    .tag {
+      display:inline-block;
+      background:rgba(56,189,248,.08); border:1px solid rgba(56,189,248,.18);
+      color:var(--accent); font-size:.74rem; font-weight:500;
+      padding:4px 11px; border-radius:20px; margin:3px 2px;
+      transition:background .2s;
+    }
+    .tag:hover { background:rgba(56,189,248,.2); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background:var(--bg-card); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .tl { position:relative; padding-left:30px; }
+    .tl::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:2px; background:linear-gradient(180deg,var(--accent),transparent); }
+    .tl-item { position:relative; margin-bottom:36px; }
+    .tl-item::before {
+      content:''; position:absolute; left:-37px; top:8px;
+      width:14px; height:14px; border-radius:50%;
+      background:var(--accent); box-shadow:0 0 14px rgba(56,189,248,.6);
+    }
+    .tl-card {
+      background:var(--bg); border:1px solid var(--border); border-radius:12px;
+      padding:22px 26px; transition:border-color .25s, box-shadow .25s;
+    }
+    .tl-card:hover { border-color:var(--accent); box-shadow:0 8px 28px rgba(56,189,248,.1); }
+    .tl-role { font-family:var(--fh); font-weight:700; font-size:1.05rem; color:var(--txt); }
+    .tl-period { font-size:.8rem; color:var(--accent); font-weight:600; margin:5px 0 12px; }
+    .tl-desc { color:var(--muted); font-size:.9rem; line-height:1.75; }
+    .tl-desc li { margin-bottom:6px; }
+
+    /* ── PROJECTS ── */
+    .proj-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:14px;
+      padding:26px; height:100%; display:flex; flex-direction:column;
+      transition:border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .proj-card:hover { border-color:var(--accent); transform:translateY(-5px); box-shadow:0 14px 44px rgba(56,189,248,.14); }
+    .proj-emoji { font-size:1.9rem; margin-bottom:12px; }
+    .proj-title { font-family:var(--fh); font-weight:700; font-size:1rem; color:var(--txt); margin-bottom:10px; }
+    .proj-desc { color:var(--muted); font-size:.88rem; line-height:1.7; flex:1; }
+    .proj-tags { margin-top:16px; display:flex; flex-wrap:wrap; gap:5px; }
+    .ptag { font-size:.7rem; font-weight:600; background:rgba(56,189,248,.07); border:1px solid rgba(56,189,248,.18); color:var(--accent); padding:3px 10px; border-radius:4px; }
+
+    /* ── EDUCATION ── */
+    #education { background:var(--bg-card); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .edu-card {
+      background:var(--bg); border:1px solid var(--border); border-radius:14px;
+      padding:30px; transition:border-color .25s, box-shadow .25s;
+    }
+    .edu-card:hover { border-color:var(--accent); box-shadow:0 8px 28px rgba(56,189,248,.1); }
+    .edu-deg { font-family:var(--fh); font-weight:700; font-size:1.15rem; color:var(--txt); }
+    .edu-branch { color:var(--accent); font-weight:600; margin:4px 0; }
+    .edu-school { font-family:var(--fh); font-weight:700; color:var(--txt); margin-top:6px; }
+    .edu-meta { color:var(--muted); font-size:.86rem; margin-top:6px; }
+    .cgpa-pill {
+      display:inline-block;
+      background:linear-gradient(135deg,var(--accent2),var(--accent));
+      color:#080f1e; font-family:var(--fh); font-weight:800;
+      font-size:.88rem; padding:6px 18px; border-radius:20px; margin-top:12px;
+    }
+    .cert-row {
+      display:flex; align-items:flex-start; gap:14px;
+      background:var(--bg); border:1px solid var(--border); border-radius:12px;
+      padding:16px 20px; margin-bottom:12px;
+      transition:border-color .25s, transform .2s;
+    }
+    .cert-row:hover { border-color:var(--accent); transform:translateX(5px); }
+    .cert-ico { color:var(--gold); font-size:1.1rem; margin-top:2px; flex-shrink:0; }
+    .cert-txt { color:var(--muted); font-size:.9rem; line-height:1.55; }
+    .cert-txt strong { color:var(--txt); }
+
+    /* ── CONTACT ── */
+    .contact-tile {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:14px;
+      padding:30px 20px; text-align:center; text-decoration:none; display:block;
+      transition:border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .contact-tile:hover { transform:translateY(-6px); }
+    .ct-icon-wrap {
+      width:60px; height:60px; border-radius:14px; margin:0 auto 16px;
+      display:flex; align-items:center; justify-content:center; font-size:1.5rem;
+    }
+    .ct-label { font-family:var(--fh); font-weight:700; font-size:.98rem; color:var(--txt); margin-bottom:4px; }
+    .ct-val { color:var(--muted); font-size:.78rem; word-break:break-all; }
+    .tile-li { border-color:rgba(10,102,194,.3); }
+    .tile-li .ct-icon-wrap { background:rgba(10,102,194,.15); color:var(--li); border:1px solid rgba(10,102,194,.3); }
+    .tile-li:hover { border-color:var(--li); box-shadow:0 14px 40px rgba(10,102,194,.22); }
+    .tile-gh { border-color:rgba(230,237,243,.14); }
+    .tile-gh .ct-icon-wrap { background:rgba(230,237,243,.07); color:var(--gh); border:1px solid rgba(230,237,243,.2); }
+    .tile-gh:hover { border-color:rgba(230,237,243,.35); box-shadow:0 14px 40px rgba(230,237,243,.1); }
+    .tile-wp { border-color:rgba(37,211,102,.22); }
+    .tile-wp .ct-icon-wrap { background:rgba(37,211,102,.12); color:var(--wp); border:1px solid rgba(37,211,102,.25); }
+    .tile-wp:hover { border-color:var(--wp); box-shadow:0 14px 40px rgba(37,211,102,.2); }
+    .tile-em { border-color:rgba(234,67,53,.22); }
+    .tile-em .ct-icon-wrap { background:rgba(234,67,53,.12); color:var(--mail); border:1px solid rgba(234,67,53,.25); }
+    .tile-em:hover { border-color:var(--mail); box-shadow:0 14px 40px rgba(234,67,53,.15); }
+
+    /* ── FOOTER ── */
+    footer { background:#04080f; border-top:1px solid var(--border); padding:50px 0 28px; }
+    .foot-name { font-family:var(--fh); font-weight:800; font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+    .foot-tag  { color:var(--muted); font-size:.88rem; margin-bottom:20px; }
+    .foot-copy { color:var(--muted); font-size:.8rem; }
+    .foot-copy span { color:var(--accent); }
+    .f-social { display:flex; gap:10px; flex-wrap:wrap; }
+    .f-ico {
+      width:40px; height:40px; border-radius:10px; border:1px solid;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.95rem; text-decoration:none;
+      transition:transform .2s, box-shadow .2s, opacity .2s; opacity:.75;
+    }
+    .f-ico:hover { transform:translateY(-3px); opacity:1; }
+    .f-ico.li { color:#fff; border-color:rgba(10,102,194,.4); background:rgba(10,102,194,.12); }
+    .f-ico.li:hover { box-shadow:0 6px 18px rgba(10,102,194,.3); }
+    .f-ico.gh { color:var(--gh); border-color:rgba(230,237,243,.2); background:rgba(230,237,243,.05); }
+    .f-ico.gh:hover { box-shadow:0 6px 18px rgba(230,237,243,.12); }
+    .f-ico.wp { color:#fff; border-color:rgba(37,211,102,.4); background:rgba(37,211,102,.1); }
+    .f-ico.wp:hover { box-shadow:0 6px 18px rgba(37,211,102,.25); }
+    .f-ico.em { color:#fff; border-color:rgba(234,67,53,.35); background:rgba(234,67,53,.1); }
+    .f-ico.em:hover { box-shadow:0 6px 18px rgba(234,67,53,.2); }
+
+    /* ── SCROLL TOP ── */
+    #toTop {
+      position:fixed; bottom:26px; right:26px;
+      width:44px; height:44px;
+      background:linear-gradient(135deg,var(--accent2),var(--accent));
+      border:none; border-radius:10px; z-index:999;
+      display:flex; align-items:center; justify-content:center;
+      color:#080f1e; font-size:1rem; cursor:pointer;
+      opacity:0; pointer-events:none;
+      transition:opacity .3s, transform .2s;
+      box-shadow:0 6px 22px rgba(56,189,248,.3);
+    }
+    #toTop.show { opacity:1; pointer-events:all; }
+    #toTop:hover { transform:translateY(-3px); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity:1; transform:translateY(0); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:991px) {
+      .info-grid { grid-template-columns:1fr; }
+      .hero-content { padding:100px 0 60px; }
+      
+    }
+    @media (max-width:767px) {
+      section { padding:70px 0; }
+      .hero-name { font-size:2.4rem; }
+    }
+    @media (max-width:575px) {
+      .s-pill span { display:none; }
+      .s-pill { padding:8px 12px; }
+      .sec-title { font-size:1.5rem; }
+      .hero-content {padding-left: 20px; padding-right: 20px;}
+
+      .hero-photo-wrap img {
+    width: 260px;
+    height: 310px;
+  }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">
+      <i class="fas fa-code" style="font-size:1rem"></i>VS<span class="brand-dot">.</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="nav">
+      <ul class="navbar-nav gap-1 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-layer-group"></i> Skills</a></li>  
+        <li class="nav-item"><a class="nav-link" href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-paper-plane"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+
+<section id="hero">
+  <div class="container hero-content">
+    <div class="row align-items-center gy-5">
+
+      <!-- TEXT — left on desktop, bottom on mobile -->
+      <div class="col-lg-7 col-12 order-2 order-lg-1">
+        <div class="hero-badge"><i class="fas fa-circle" style="font-size:.5rem;color:var(--green)"></i> Available for hire</div>
+        <h1 class="hero-name">Hi, I'm<br><span class="hi">Venkatesan S</span></h1>
+        <div class="hero-role"><i class="fas fa-terminal me-2" style="font-size:.9rem"></i>Java Full Stack Developer</div>
+        <p class="hero-desc">Building scalable web applications with <strong style="color:var(--txt)">Java, Spring Boot &amp; ReactJS</strong>. Passionate about clean code, efficient systems, and impactful digital solutions.</p>
+        <div class="hero-btns">
+          <a href="venkatesan.pdf" download class="btn-glow"><i class="fas fa-download"></i> Download CV</a>
+          <a href="#contact" class="btn-ghost"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://linkedin.com/in/venkatesan-s-720131393" target="_blank" class="s-pill li"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+          <a href="https://github.com/venkatesan2577" target="_blank" class="s-pill gh"><i class="fab fa-github"></i><span>GitHub</span></a>
+          <a href="https://wa.me/917550354276" target="_blank" class="s-pill wp"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+          <a href="mailto:venkatesansankar2577@gmail.com" class="s-pill em"><i class="fab fa-google"></i><span>Gmail</span></a>
+        </div>
+      </div>
+
+      <!-- PHOTO — right on desktop, top on mobile -->
+      <div class="col-lg-5 col-12 order-1 order-lg-2 d-flex justify-content-center">
+        <div class="hero-photo-wrap">
+          <img src="photo.jpg.jpeg" alt="Venkatesan S">
+          <div class="cgpa-badge">
+            <div class="num">7.4</div>
+            <div class="lbl">CGPA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 reveal">
+        <div class="sec-chip"><i class="fas fa-user-circle"></i> Who I Am</div>
+        <h2 class="sec-title">About Me</h2>
+        <div class="sec-line"></div>
+        <p class="about-text">I'm a <strong>Java Full Stack Developer</strong> with hands-on experience building scalable web applications. I completed my B.E. in Electronics and Communications Engineering from <strong>Sona College of Technology, Salem</strong>.</p>
+        <p class="about-text mt-3">Strong fundamentals in <strong>OOP, data structures, and database design</strong>, committed to delivering efficient and impactful solutions. Currently working as a <strong>Freelance Web Developer</strong> while actively seeking full-time opportunities.</p>
+      </div>
+      <div class="col-lg-6 offset-lg-1 reveal">
+        <div class="info-grid">
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-map-marker-alt me-1"></i>Location</div>
+            <div class="val">Salem, Tamil Nadu</div>
+          </div>
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-phone me-1"></i>Phone</div>
+            <div class="val">+91 75503 54276</div>
+          </div>
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-envelope me-1"></i>Email</div>
+            <div class="val" style="font-size:.82rem">venkatesansankar2577@gmail.com</div>
+          </div>
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-circle me-1" style="font-size:.55rem;color:var(--green)"></i>Status</div>
+            <div class="val" style="color:var(--green)">Available for hire</div>
+          </div>
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-university me-1"></i>Degree</div>
+            <div class="val">B.E. — ECE (2021–2025)</div>
+          </div>
+          <div class="info-block">
+            <div class="lbl"><i class="fas fa-star me-1"></i>CGPA</div>
+            <div class="val">7.4 / 10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="sec-chip"><i class="fas fa-layer-group"></i> What I Know</div>
+      <h2 class="sec-title">Technical Skills</h2>
+      <div class="sec-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6 reveal">
+        <div class="sk-card">
+          <div class="sk-icon"><i class="fas fa-code"></i></div>
+          <div class="sk-name">Programming</div>
+          <span class="tag">Java</span><span class="tag">OOPs</span><span class="tag">Python</span>
+          <span class="tag">Data Structures</span><span class="tag">REST API</span><span class="tag">DBMS</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <div class="sk-card">
+          <div class="sk-icon"><i class="fas fa-paint-brush"></i></div>
+          <div class="sk-name">Frontend</div>
+          <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+          <span class="tag">ReactJS</span><span class="tag">jQuery</span><span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <div class="sk-card">
+          <div class="sk-icon"><i class="fas fa-database"></i></div>
+          <div class="sk-name">Database &amp; Framework</div>
+          <span class="tag">MySQL</span><span class="tag">JDBC</span>
+          <span class="tag">Spring Boot</span><span class="tag">SQL Queries</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <div class="sk-card">
+          <div class="sk-icon"><i class="fas fa-tools"></i></div>
+          <div class="sk-name">Tools &amp; Soft Skills</div>
+          <span class="tag">Eclipse</span><span class="tag">VS Code</span><span class="tag">Git</span>
+          <span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Jenkins</span>
+          <span class="tag">Problem Solving</span><span class="tag">Teamwork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="text-center reveal">
+          <div class="sec-chip"><i class="fas fa-briefcase"></i> Work History</div>
+          <h2 class="sec-title">Experience</h2>
+          <div class="sec-line mx-auto"></div>
+        </div>
+        <div class="tl reveal">
+          <div class="tl-item">
+            <div class="tl-card">
+              <div class="tl-role"><i class="fas fa-laptop-code me-2" style="color:var(--accent);font-size:.9rem"></i>Freelance Web Developer</div>
+              <div class="tl-period"><i class="far fa-calendar-alt me-1"></i>January 2026 – Present</div>
+              <ul class="tl-desc ps-3">
+                <li>Developed a responsive user query and support portal using HTML, CSS, JavaScript, Bootstrap, and jQuery.</li>
+                <li>Designed an interactive UI improving user engagement and usability.</li>
+                <li>Handled multiple user queries efficiently through the platform.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="sec-chip"><i class="fas fa-diagram-project"></i> What I Built</div>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-emoji">🖥️</div>
+          <div class="proj-title">Desktop Code Evaluation &amp; Practice Platform</div>
+          <div class="proj-desc">A HackerRank-style code compiler with user signup, login, database authentication. Compile &amp; execute code in real time with automatic output validation.</div>
+          <div class="proj-tags">
+            <span class="ptag">Java</span><span class="ptag">Java Swing</span><span class="ptag">JDBC</span><span class="ptag">MySQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-emoji">🎓</div>
+          <div class="proj-title">Student Academic &amp; Activity Tracking System</div>
+          <div class="proj-desc">A SQL-based Student Management System storing academics, placements, extracurricular activities, and sports data with normalized database design.</div>
+          <div class="proj-tags">
+            <span class="ptag">MySQL</span><span class="ptag">SQL</span><span class="ptag">Database Design</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-emoji">📸</div>
+          <div class="proj-title">Instagram Clone</div>
+          <div class="proj-desc">A front-end Instagram clone built with React JS covering component-based architecture, state management, routing, React Hooks, and API integration.</div>
+          <div class="proj-tags">
+            <span class="ptag">ReactJS</span><span class="ptag">JavaScript</span><span class="ptag">HTML</span><span class="ptag">CSS</span>
+          </div>
+          <div class="mt-3">
+            <!-- <a href="https://github.com/venkatesan2577" target="_blank" class="btn-ghost" style="padding:7px 15px;font-size:.78rem">
+              <i class="fab fa-github"></i> View on GitHub
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="text-center reveal">
+          <div class="sec-chip"><i class="fas fa-graduation-cap"></i> Academic Background</div>
+          <h2 class="sec-title">Education</h2>
+          <div class="sec-line mx-auto"></div>
+        </div>
+        <div class="edu-card reveal mb-5">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <div class="edu-deg"><i class="fas fa-scroll me-2" style="color:var(--accent);font-size:.9rem"></i>Bachelor of Engineering</div>
+              <div class="edu-branch">Electronics and Communications Engineering</div>
+              <div class="edu-school"><i class="fas fa-building-columns me-2" style="color:var(--muted);font-size:.85rem"></i>Sona College of Technology, Salem</div>
+              <div class="edu-meta"><i class="far fa-calendar-alt me-2"></i>2021 – 2025</div>
+              <div class="cgpa-pill">🎯 CGPA: 7.4 / 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center reveal mb-4">
+          <div class="sec-chip"><i class="fas fa-trophy"></i> Achievements</div>
+          <h3 class="sec-title" style="font-size:1.8rem">Certifications &amp; Achievements</h3>
+          <div class="sec-line mx-auto"></div>
+        </div>
+        <div class="reveal">
+          <div class="cert-row">
+            <div class="cert-ico"><i class="fas fa-certificate"></i></div>
+            <div class="cert-txt"><strong>NPTEL Certification</strong> — Java Programming</div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-ico"><i class="fas fa-graduation-cap"></i></div>
+            <div class="cert-txt"><strong>Master Program</strong> — Full Stack Development Using Java</div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-ico"><i class="fas fa-trophy"></i></div>
+            <div class="cert-txt"><strong>Research Paper Presentation</strong> — "Monitoring Camera for Surveillance" at the 6th International Conference</div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-ico"><i class="fas fa-star"></i></div>
+            <div class="cert-txt"><strong>Office Bearer</strong> — College organization, contributing to event coordination and team leadership</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="sec-chip"><i class="fas fa-paper-plane"></i> Let's Connect</div>
+      <h2 class="sec-title">Get In Touch</h2>
+      <div class="sec-line mx-auto"></div>
+      <p style="color:var(--muted);max-width:460px;margin:0 auto 48px;font-size:.95rem;line-height:1.75">
+        I'm actively looking for new opportunities. Whether you have a project, a question, or just want to say hello — feel free to reach out!
+      </p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-3 col-md-6 reveal">
+        <a href="https://linkedin.com/in/venkatesan-s-720131393" target="_blank" class="contact-tile tile-li">
+          <div class="ct-icon-wrap"><i class="fab fa-linkedin"></i></div>
+          <div class="ct-label">LinkedIn</div>
+          <div class="ct-val">venkatesan-s-720131393</div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <a href="https://github.com/venkatesan2577" target="_blank" class="contact-tile tile-gh">
+          <div class="ct-icon-wrap"><i class="fab fa-github"></i></div>
+          <div class="ct-label">GitHub</div>
+          <div class="ct-val">github.com/venkatesan2577</div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <a href="https://wa.me/917550354276" target="_blank" class="contact-tile tile-wp">
+          <div class="ct-icon-wrap"><i class="fab fa-whatsapp"></i></div>
+          <div class="ct-label">WhatsApp</div>
+          <div class="ct-val">+91 75503 54276</div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-6 reveal">
+        <a href="mailto:venkatesansankar2577@gmail.com" class="contact-tile tile-em">
+          <div class="ct-icon-wrap"><i class="fab fa-google" style="color:var(--mail)"></i></div>
+          <div class="ct-label">Gmail</div>
+          <div class="ct-val">venkatesansankar2577@gmail.com</div>
+        </a>
+      </div>
+    </div>
+    <div class="text-center mt-5 reveal">
+      <a href="venkatesan.pdf" download class="btn-glow" style="font-size:.97rem;padding:13px 36px">
+        <i class="fas fa-file-arrow-down me-2"></i>Download My CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <div class="foot-name"><i class="fas fa-code me-2" style="font-size:1rem"></i>Venkatesan S</div>
+        <div class="foot-tag">Java Full Stack Developer · Salem, Tamil Nadu</div>
+        <div class="f-social justify-content-center justify-content-md-start">
+          <a href="https://linkedin.com/in/venkatesan-s-720131393" target="_blank" class="f-ico li" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/venkatesan2577" target="_blank" class="f-ico gh" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://wa.me/917550354276" target="_blank" class="f-ico wp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:venkatesansankar2577@gmail.com" class="f-ico em" title="Gmail"><i class="fab fa-google" style="color:var(--mail)"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <nav class="d-flex gap-3 flex-wrap justify-content-center justify-content-md-end mb-3">
+          <a href="#about"    style="color:var(--muted);text-decoration:none;font-size:.82rem;font-family:var(--fh)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-user me-1"></i>About</a>
+          <a href="#skills"   style="color:var(--muted);text-decoration:none;font-size:.82rem;font-family:var(--fh)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-layer-group me-1"></i>Skills</a>
+          <a href="#projects" style="color:var(--muted);text-decoration:none;font-size:.82rem;font-family:var(--fh)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-diagram-project me-1"></i>Projects</a>
+          <a href="#contact"  style="color:var(--muted);text-decoration:none;font-size:.82rem;font-family:var(--fh)" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-paper-plane me-1"></i>Contact</a>
+        </nav>
+        <div class="foot-copy">© 2025 <span>Venkatesan S</span>. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCROLL TOP ── -->
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const revEls = document.querySelectorAll('.reveal');
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*90); revObs.unobserve(e.target); }
+    });
+  }, { threshold:0.1 });
+  revEls.forEach(r => revObs.observe(r));
+
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => toTop.classList.toggle('show', window.scrollY > 420));
+
+  const secs = document.querySelectorAll('section[id]');
+  const nls  = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if(window.scrollY >= s.offsetTop - 95) cur = s.id; });
+    nls.forEach(l => {
+      l.classList.remove('active');
+      if(l.getAttribute('href') === '#'+cur) l.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
